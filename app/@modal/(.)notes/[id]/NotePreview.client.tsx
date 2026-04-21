@@ -1,8 +1,7 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import css from "./NotePreview.module.css";
-import { useRouter } from "next/router";
 import { useQuery } from "@tanstack/react-query";
 import { fetchNotesById } from "@/lib/api";
 import Modal from "@/components/Modal/Modal";
@@ -23,7 +22,7 @@ export default function NotePreview() {
   if (error || !data) return <p>Something went wrong.</p>;
 
   return (
-    <Modal onClose={router.back}>
+    <Modal onClose={() => router.back()}>
       <div className={css.container}>
         <div className={css.item}>
           <div className={css.header}>
